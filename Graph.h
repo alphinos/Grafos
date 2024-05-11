@@ -13,6 +13,7 @@ typedef struct _graph_{
 } Graph;
 
 Graph* initGraph( RepresentationGraph representation_type );
+void destroyGraph( Graph* graph );
 
 // Printing
 void print_graph( Graph* graph );
