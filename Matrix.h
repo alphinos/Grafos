@@ -5,6 +5,8 @@
 
 #ifdef _MATRIX_C_
 
+// Adapt the struct in the future to be able to receive undefined dimensions
+
 typedef struct _matrix_{
     int m;
     int n;
@@ -13,34 +15,28 @@ typedef struct _matrix_{
 } Matrix;
 
 // Basics
-Matrix* initMatrix(  );
 Matrix* initMatrix( int m, int n );
-Matrix* initMatrix( int m, int n, Item** mat );
 
 void destroyMatrix( Matrix* matrix );
+void emptyMatrix( Matrix* matrix );
 
 Item** get_items_mat( Matrix* matrix );
 
-void set_m_matrix( Matrix* matrix, int m );
-void set_n_matrix( Matrix* matrix, int n );
-void set_mat_matrix( Matrix* matrix, Item** mat );
-
 void insert_item_matrix( Matrix* matrix, Item* item, unsigned int x, unsigned int y );
-void insert_item_matrix( Matrix* matrix, Item* item ); // Default: inserts in the first cell that is different of NULL
 
-Item get_item_matrix( Matrix* matrix, unsigned int x, unsigned int y );
+Item* get_item_matrix( Matrix* matrix, unsigned int x, unsigned int y );
 
-Item* remove_item_matrix( Matrix* matrix, Item* item );
+Item* remove_item_matrix( Matrix* matrix, Item* item, int ( *cmp )( void*, void* ) );
 Item* pop_item_matrix( Matrix* matrix, unsigned int x, unsigned int y );
-Item* pop_item_matrix( Matrix* matrix ); // Default: removes the first cell that is different of NULL
+
+void display_matrix( Matrix* matrix );
 
 // Utilitary
 void fill_matrix( Matrix* matrix, Item item );
 
 Matrix* copy_matrix( Matrix* matrix );
-void copy_matrix( Matrix* a, Matrix* b ); // Copies Matrix a to Matrix b if mb >= ma and nb >= na
 
-Bool is_simetric( Matrix* matrix );
+Bool is_simetric( Matrix* matrix, int ( *cmp )( Item*, Item* ) );
 
 unsigned int count_non_null_cells( Matrix* matrix );
 
@@ -48,26 +44,30 @@ unsigned int count_non_null_cells( Matrix* matrix );
 
 typedef struct _matrix_ Matrix;
 
-extern Matrix* initMatrix(  );
+// Basics
 extern Matrix* initMatrix( int m, int n );
-extern Matrix* initMatrix( int m, int n, Item** mat );
 
 extern void destroyMatrix( Matrix* matrix );
 
 extern Item** get_items_mat( Matrix* matrix );
 
-extern void set_m_matrix( Matrix* matrix, int m );
-extern void set_n_matrix( Matrix* matrix, int n );
-extern void set_mat_matrix( Matrix* matrix, Item** mat );
-
 extern void insert_item_matrix( Matrix* matrix, Item* item, unsigned int x, unsigned int y );
-extern void insert_item_matrix( Matrix* matrix, Item* item );
 
-extern Item get_item_matrix( Matrix* matrix, unsigned int x, unsigned int y );
+extern Item* get_item_matrix( Matrix* matrix, unsigned int x, unsigned int y );
 
-extern Item* remove_item_matrix( Matrix* matrix, Item* item );
+extern Item* remove_item_matrix( Matrix* matrix, Item* item, int ( *cmp )( void*, void* ) );
 extern Item* pop_item_matrix( Matrix* matrix, unsigned int x, unsigned int y );
-extern Item* pop_item_matrix( Matrix* matrix );
+
+extern void display_matrix( Matrix* matrix );
+
+// Utilitary
+extern void fill_matrix( Matrix* matrix, Item item );
+
+extern Matrix* copy_matrix( Matrix* matrix );
+
+extern Bool is_simetric( Matrix* matrix, int ( *cmp )( Item*, Item* ) );
+
+extern unsigned int count_non_null_cells( Matrix* matrix );
 
 #endif
 
