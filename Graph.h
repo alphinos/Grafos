@@ -1,11 +1,12 @@
 #ifndef _GRAPH_H_
 #define _GRAPH_H_
 
-#ifdef _GRAPH_C_
-
 typedef enum _representation_graph_{
     MATRIX_ADJ, LIST_ADJ
 } RepresentationGraph;
+
+#ifdef _GRAPH_C_
+
 
 typedef struct _graph_{
     RepresentationGraph representation_type;
@@ -23,9 +24,9 @@ void print_list_graph( Graph* gaph );
 #else
 
 typedef struct _graph_ Graph;
-typedef struct _representation_graph_ RepresentationGraph;
 
 extern Graph* initGraph( RepresentationGraph representation_type );
+extern void print_graph( Graph* graph );
 
 #endif
 #endif

@@ -30,7 +30,7 @@ Item* listQuery( List* list, Item* key, int ( *cmp )( Item*, Item* ) );
 Item* listRemove( List* list, Item* key, int* ( *cmp )( Item*, Item* ) );
 
 Bool listAppend( List* list, Item* data, unsigned int pos );
-Bool listPop( List* list, unsigned int pos );
+Item* listPop( List* list, unsigned int pos );
 Item* listGet( List* list, unsigned int pos );
 
 // Stack
