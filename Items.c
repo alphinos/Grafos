@@ -27,9 +27,9 @@ void empty_data( void* data, TypeItems type_data ){
             break;
         case GRAPH_ITEM:
             GraphItem* graph_item = ( GraphItem* ) data;
-            if ( graph_item->type_data == NONE )
+            if ( graph_item->item.type_data == NONE )
                 item->data = NULL;
-            empty_data( graph_item->data, graph_item->type_data );
+            empty_data( ( void * )&graph_item->item, graph_item->item.type_data );
             item->type_data = NONE;
             break;
     }
@@ -60,6 +60,10 @@ char* to_string( Item* item ){
 
 void print_item( Item* item ){
 
+}
+
+int item_compare( Item* a, Item* b ){
+    
 }
 
 #endif

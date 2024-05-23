@@ -89,7 +89,11 @@ Item* listRemove( List* list, Item* key, int* ( *cmp )( Item*, Item* ) ){
         if ( cmp( &current->data, key ) == 0 ){
             previous = current->previous;
             previous->next = current->next;
-            return &current->data;
+            Item* data = ( Item* ) malloc( sizeof( Item ) );
+            data->data = current->data.data;
+            data->type_data = current->data.type_data;
+            free( current );
+            return data;
         }
 
         current = current->next;

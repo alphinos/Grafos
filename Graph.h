@@ -11,6 +11,7 @@ typedef enum _representation_graph_{
 typedef struct _graph_{
     RepresentationGraph representation_type;
     void* adjacences;
+    Item* vertices_items;
     unsigned int size;
 } Graph;
 
@@ -18,11 +19,11 @@ Graph* initGraph( unsigned int size, RepresentationGraph representation_type );
 void destroyGraph( Graph* graph );
 void emptyGraph( Graph* graph );
 
-Bool add_directed_edge( Graph* graph, Item* u, Item* v );
-Bool add_non_directed_edge( Graph* graph, Item* u, Item* v );
+Bool add_directed_edge( Graph* graph, unsigned int u, unsigned int v );
+Bool add_non_directed_edge( Graph* graph, unsigned int u, unsigned int v );
 
-Item* remove_directed_edge( Graph* graph, Item* u, Item* v );
-Item* remove_non_directed_edge( Graph* graph, Item* u, Item* v );
+Item* remove_directed_edge( Graph* graph, unsigned int u, unsigned int v );
+Item* remove_non_directed_edge( Graph* graph, unsigned int u, unsigned int v );
 
 // Printing
 void display_graph( Graph* graph );
@@ -37,11 +38,11 @@ extern Graph* initGraph( unsigned int size, RepresentationGraph representation_t
 extern void destroyGraph( Graph* graph );
 extern void emptyGraph( Graph* graph );
 
-extern Bool add_directed_edge( Graph* graph, Item* u, Item* v );
-extern Bool add_non_directed_edge( Graph* graph, Item* u, Item* v );
+extern Bool add_directed_edge( Graph* graph, unsigned int u, unsigned int v );
+extern Bool add_non_directed_edge( Graph* graph, unsigned int u, unsigned int v );
 
-extern Item* remove_directed_edge( Graph* graph, Item* u, Item* v );
-extern Item* remove_non_directed_edge( Graph* graph, Item* u, Item* v );
+extern Item* remove_directed_edge( Graph* graph, unsigned int u, unsigned int v );
+extern Item* remove_non_directed_edge( Graph* graph, unsigned int u, unsigned int v );
 
 extern void display_graph( Graph* graph );
 
