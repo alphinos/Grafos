@@ -26,6 +26,8 @@ Bool listDestroy( List* list );
 Bool emptyList( List* list );
 unsigned int listGetLength( List* list );
 
+char sizeofList( void );
+
 Item* listQuery( List* list, Item* key, int ( *cmp )( Item*, Item* ) );
 Item* listRemove( List* list, Item* key, int* ( *cmp )( Item*, Item* ) );
 
@@ -52,6 +54,8 @@ extern List* listInit( void );
 extern Bool listDestroy( List* list );
 extern Bool emptyList( List* list );
 extern unsigned int listGetLength( List* list );
+
+extern char sizeofList( void );
 
 extern Item* listQuery( List* list, Item* key, int ( *cmp )( Item*, Item* ) );
 extern Item* listRemove( List* list, Item* key, int* ( *cmp )( Item*, Item* ) );

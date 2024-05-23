@@ -57,6 +57,10 @@ unsigned int listGetLength( List* list ){
     return list->length;
 }
 
+char sizeofList( void ){
+    return sizeof( List );
+}
+
 Item* listQuery( List* list, Item* key, int ( *cmp )( Item*, Item* ) ){
     if ( list == NULL || list->length == 0 )
         return NULL;

@@ -29,10 +29,9 @@ typedef struct _word_{
 typedef struct _graph_item_{
     unsigned int go_to;
 
-    int weight;
+    int weight_arrival; // Peso de chegada
 
-    TypeItems type_data;
-    void* data;
+    Item item;
 } GraphItem;
 
 #ifdef _ITEMS_C_

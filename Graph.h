@@ -1,5 +1,6 @@
 #ifndef _GRAPH_H_
 #define _GRAPH_H_
+#include "Items.h"
 
 typedef enum _representation_graph_{
     MATRIX_ADJ, LIST_ADJ
@@ -7,26 +8,43 @@ typedef enum _representation_graph_{
 
 #ifdef _GRAPH_C_
 
-
 typedef struct _graph_{
     RepresentationGraph representation_type;
-    void* *adjacences;
+    void* adjacences;
+    unsigned int size;
 } Graph;
 
-Graph* initGraph( RepresentationGraph representation_type );
+Graph* initGraph( unsigned int size, RepresentationGraph representation_type );
 void destroyGraph( Graph* graph );
+void emptyGraph( Graph* graph );
+
+Bool add_directed_edge( Graph* graph, Item* u, Item* v );
+Bool add_non_directed_edge( Graph* graph, Item* u, Item* v );
+
+Item* remove_directed_edge( Graph* graph, Item* u, Item* v );
+Item* remove_non_directed_edge( Graph* graph, Item* u, Item* v );
 
 // Printing
-void print_graph( Graph* graph );
-void print_matrix_graph( Graph* graph );
-void print_list_graph( Graph* gaph );
+void display_graph( Graph* graph );
+void display_matrix_graph( Graph* graph );
+void display_list_graph( Graph* gaph );
 
 #else
 
 typedef struct _graph_ Graph;
 
-extern Graph* initGraph( RepresentationGraph representation_type );
-extern void print_graph( Graph* graph );
+extern Graph* initGraph( unsigned int size, RepresentationGraph representation_type );
+extern void destroyGraph( Graph* graph );
+extern void emptyGraph( Graph* graph );
+
+extern Bool add_directed_edge( Graph* graph, Item* u, Item* v );
+extern Bool add_non_directed_edge( Graph* graph, Item* u, Item* v );
+
+extern Item* remove_directed_edge( Graph* graph, Item* u, Item* v );
+extern Item* remove_non_directed_edge( Graph* graph, Item* u, Item* v );
+
+extern void display_graph( Graph* graph );
 
 #endif
+
 #endif

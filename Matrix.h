@@ -49,6 +49,8 @@ extern Matrix* initMatrix( int m, int n );
 
 extern void destroyMatrix( Matrix* matrix );
 
+extern void emptyMatrix( Matrix* matrix );
+
 extern Item** get_items_mat( Matrix* matrix );
 
 extern void insert_item_matrix( Matrix* matrix, Item* item, unsigned int x, unsigned int y );
